@@ -10,18 +10,50 @@
             border: 1px solid #ccc;
             padding: 20px;
             margin: 15px;
-            border-radius: 8px;
+            width: 150px;
+            height: 150px;
+            border-radius: 10px;
             text-decoration: none;
             color: black;
             font-size: 1.2em;
+            font-weight: bold;
+            vertical-align: top;
         }
-        .book-icon:hover { background-color: #f0f0f0; }
+        .book-icon:hover {
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transform: scale(1.05);
+            transition: all 0.2s ease-in-out;
+        }
+        .book-icon img {
+            width: 80px;
+            height: 80px;
+        }
+        .book-icon span {
+            display: block;
+            margin-top: 10px;
+        }
+        #book1 { background-color: #e3f2fd; } /* হালকা নীল */
+        #book2 { background-color: #e8f5e9; } /* হালকা সবুজ */
+        #book3 { background-color: #fff3e0; } /* হালকা কমলা */
     </style>
 </head>
 <body>
-    <h1>আপনার বইয়ের তালিকা</h1>
-    <a href="books/book1.html" class="book-icon">Book 1</a>
-    <a href="#" class="book-icon">Book 2</a>
-    <a href="#" class="book-icon">Book 3</a>
+    <h1>আপনার বইয়ের তালিকা</h1>
+    
+    <a href="books/book1.html" class="book-icon" id="book1">
+        <img src="images/book1.svg" alt="Book 1 Icon">
+        <span>Book 1</span>
+    </a>
+    
+    <a href="books/book2.html" class="book-icon" id="book2">
+        <img src="images/book2.svg" alt="Book 2 Icon">
+        <span>Book 2</span>
+    </a>
+    
+    <a href="#" class="book-icon" id="book3">
+        <img src="images/book3.svg" alt="Book 3 Icon">
+        <span>Book 3</span>
+    </a>
+
 </body>
 </html>
