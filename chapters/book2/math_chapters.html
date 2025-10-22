@@ -6,23 +6,44 @@
     <style>
         body { font-family: sans-serif; }
         ul { list-style-type: none; padding: 0; max-width: 600px; margin: 20px auto; }
-        li a {
-            display: block;
-            padding: 18px;
+        /* Style adjustments for list items with multiple links */
+        li {
+            padding: 18px; /* Padding moved from <a> to <li> */
             border-bottom: 1px solid #ddd;
-            text-decoration: none;
-            color: #333;
             font-size: 1.2em;
+            color: #333;
         }
-        li a:hover { background-color: #f4f4f4; }
+        li a {
+            /* display: block; removed */
+            /* padding: 18px; moved */
+            text-decoration: none;
+            color: #0066cc; /* Link color */
+            /* font-size: 1.2em; moved */
+            margin-left: 5px; /* Space between links */
+            margin-right: 5px;
+        }
+        li a:hover { text-decoration: underline; background-color: transparent;} /* Removed hover background */
     </style>
 </head>
 <body>
     <h2>গণিত (অধ্যায়ের তালিকা)</h2>
     <ul>
-        <li><a href="../../pdfs/book2/math_chapter_1.pdf" target="_blank">অধ্যায় ১: সংখ্যা তত্ত্ব</a></li>
-        <li><a href="../../pdfs/book2/math_chapter_2.pdf" target="_blank">অধ্যায় ২: লাভ ও ক্ষতি</a></li>
-        <li><a href="../../pdfs/book2/math_chapter_3.pdf" target="_blank">অধ্যায় ৩: সময় ও কার্য</a></li>
+        <li>
+            অধ্যায় ১: সরল সুদ
+            (<a href="../../pdfs/book2/Simple_Interest_Formula_part2.pdf" target="_blank">সরল সুদের সমস্ত সুত্র Part-2</a> |
+             <a href="https://avijitsir.github.io/SI-Adv-/" target="_blank">অনুশীলনী-2</a>)
+        </li>
+        <li>
+            অধ্যায় 2: জটিল সুদ
+            (<a href="../../pdfs/book2/Compount_Interest_Formula_part1.pdf" target="_blank">জটিল সুদের সমস্ত সুত্র</a> |
+             <a href="https://www.example.com/some-resource" target="_blank">অনুশীলনী-1</a>)
+        </li>
+        <li>
+            <a href="../../pdfs/book2/math_chapter_2.pdf" target="_blank">অধ্যায় ২: লাভ ও ক্ষতি</a>
+        </li>
+        <li>
+            <a href="../../pdfs/book2/math_chapter_3.pdf" target="_blank">অধ্যায় ৩: সময় ও কার্য</a>
+        </li>
         </ul>
 </body>
 </html>
