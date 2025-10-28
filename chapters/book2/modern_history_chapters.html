@@ -2,25 +2,65 @@
 <html lang="bn">
 <head>
     <meta charset="UTF-8">
-    <title>ভারতের আধুনিক ইতিহাস- অধ্যায়ের তালিকা</title>
+    <title>ভারতের আধুনিক ইতিহাস - অধ্যায়ের তালিকা</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        body { font-family: sans-serif; }
-        ul { list-style-type: none; padding: 0; max-width: 600px; margin: 20px auto; }
-        li a {
-            display: block;
-            padding: 18px;
-            border-bottom: 1px solid #ddd;
-            text-decoration: none;
-            color: #333;
-            font-size: 1.2em;
+        /* This is the same style used for book2 chapter pages */
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 15px;
+            background-color: #eef1f5;
         }
-        li a:hover { background-color: #f4f4f4; }
+        h2 {
+            text-align: center;
+            color: #444;
+            margin-bottom: 30px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        /* Style the list item itself as the card */
+        li {
+            background-color: #ffffff;
+            /* color: #333; Color inherited */
+            /* padding: 16px 20px; Padding will be applied by the link inside */
+            margin-bottom: 10px; /* Space between cards */
+            border-radius: 6px;
+            /* font-size: 1.2em; Font size will be on the link */
+            text-align: left;
+            border-left: 5px solid #4CAF50;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+            /* Removed transition as the whole <li> isn't usually hovered */
+        }
+        /* Style for links within the list item (modified for full clickable) */
+        li a {
+             display: block; /* Make the whole area clickable */
+             padding: 16px 20px; /* Apply padding here */
+             color: #333; /* Use default text color */
+             text-decoration: none;
+             font-size: 1.2em;
+             transition: background-color 0.2s ease; /* Add transition here */
+        }
+         li a:hover {
+              background-color: #fdfdfd;
+              /* border-left-color: #388E3C; /* Optional: Keep border hover on li? No, style li:hover */
+              text-decoration: none; /* Remove underline for full link hover */
+              color: #333;
+         }
+         /* Optional: Darken border on li hover if desired */
+         li:hover {
+             border-left-color: #388E3C;
+         }
     </style>
 </head>
 <body>
-    <h2>ভারতের আধুনিক ইতিহাস (প্রায় ১৭০৭ - ১৯৪৭)</h2>
+    <h2>ভারতের আধুনিক ইতিহাস (প্রায় ১৭০৭ - ১৯৪৭)</h2>
     <ul>
-        <li><a href="../../pdfs/book2/ভারতের জাতীয় কংগ্রেস.pdf" target="_blank">ভারতের জাতীয় কংগ্রেস</a></li>
+        <li><a href="../../pdfs/book2/ভারতের জাতীয় কংগ্রেস.pdf" target="_blank">ভারতের জাতীয় কংগ্রেস</a></li>
         <li><a href="../../pdfs/book2/modern_history_chapter_2.pdf" target="_blank">comming soon</a></li>
         <li><a href="../../pdfs/book2/modern_history_chapter_3.pdf" target="_blank">comming soon</a></li>
         <li><a href="../../pdfs/book2/modern_history_chapter_4.pdf" target="_blank">comming soon</a></li>
@@ -29,8 +69,6 @@
         <li><a href="../../pdfs/book2/modern_history_chapter_7.pdf" target="_blank">comming soon</a></li>
         <li><a href="../../pdfs/book2/modern_history_chapter_8.pdf" target="_blank">comming soon</a></li>
         <li><a href="../../pdfs/book2/modern_history_chapter_9.pdf" target="_blank">comming soon</a></li>
-
-
-    </ul>
+        </ul>
 </body>
 </html>

@@ -3,46 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <title>গণিত - অধ্যায়ের তালিকা</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        body { font-family: sans-serif; }
-        ul { list-style-type: none; padding: 0; max-width: 600px; margin: 20px auto; }
-        /* Style adjustments for list items with multiple links */
-        li {
-            padding: 18px; /* Padding moved from <a> to <li> */
-            border-bottom: 1px solid #ddd;
-            font-size: 1.2em;
-            color: #333;
+        /* This is the same style used for book2.html links, adapted for <li> */
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 15px;
+            background-color: #eef1f5;
         }
+        h2 {
+            text-align: center;
+            color: #444;
+            margin-bottom: 30px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        /* Style the list item itself as the card */
+        li {
+            background-color: #ffffff;
+            color: #333;
+            padding: 16px 20px; /* Padding inside the card */
+            margin-bottom: 10px; /* Space between cards */
+            border-radius: 6px;
+            font-size: 1.2em; /* Base font size for the item */
+            text-align: left;
+            border-left: 5px solid #4CAF50;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+            /* Removed transition as the whole <li> isn't usually hovered */
+        }
+        /* Style for links within the list item */
         li a {
-            /* display: block; removed */
-            /* padding: 18px; moved */
             text-decoration: none;
             color: #0066cc; /* Link color */
-            /* font-size: 1.2em; moved */
+            font-size: 1em; /* Links inherit base size or adjust slightly */
             margin-left: 5px; /* Space between links */
             margin-right: 5px;
+            transition: color 0.2s ease;
         }
-        li a:hover { text-decoration: underline; background-color: transparent;} /* Removed hover background */
+        li a:hover {
+            text-decoration: underline;
+            color: #004c99; /* Darker link color on hover */
+        }
+         /* Style for list items that are fully clickable links */
+        li.clickable-link a {
+             display: block; /* Make the whole area clickable */
+             padding: 0; /* Reset padding as it's on the li */
+             margin: -16px -20px; /* Expand link to fill the li padding */
+             padding: 16px 20px; /* Re-apply padding to the link */
+             color: #333; /* Use default text color for full link */
+             text-decoration: none;
+        }
+         li.clickable-link a:hover {
+              background-color: #fdfdfd;
+              /* border-left-color: #388E3C; /* Optional: Keep border hover */
+              text-decoration: none; /* Remove underline for full link hover */
+              color: #333;
+         }
+
     </style>
 </head>
 <body>
     <h2>গণিত (অধ্যায়ের তালিকা)</h2>
     <ul>
-        <li>
-            অধ্যায় ১: সরল সুদ
+        <li> অধ্যায় ১: সরল সুদ
             (<a href="../../pdfs/book2/Simple_Interest_Formula_part2.pdf" target="_blank">সরল সুদের সমস্ত সুত্র Part-2</a> |
              <a href="https://avijitsir.github.io/SI-Adv-/" target="_blank">অনুশীলনী-2</a>)
         </li>
-        <li>
-            অধ্যায় 2: জটিল সুদ
+        <li> অধ্যায় 2: জটিল সুদ
             (<a href="../../pdfs/book2/Compount_Interest_Formula_part1.pdf" target="_blank">জটিল সুদের সমস্ত সুত্র</a> |
              <a href="https://www.example.com/some-resource" target="_blank">অনুশীলনী-1</a>)
         </li>
-        <li>
-            <a href="../../pdfs/book2/math_chapter_2.pdf" target="_blank">অধ্যায় ২: লাভ ও ক্ষতি</a>
+        <li class="clickable-link"> <a href="../../pdfs/book2/math_chapter_2.pdf" target="_blank">অধ্যায় ২: লাভ ও ক্ষতি</a>
         </li>
-        <li>
-            <a href="../../pdfs/book2/math_chapter_3.pdf" target="_blank">অধ্যায় ৩: সময় ও কার্য</a>
+        <li class="clickable-link"> <a href="../../pdfs/book2/math_chapter_3.pdf" target="_blank">অধ্যায় ৩: সময় ও কার্য</a>
         </li>
         </ul>
 </body>

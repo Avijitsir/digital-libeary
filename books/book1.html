@@ -3,17 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <title>Book 1 Subjects</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        body { font-family: sans-serif; }
-        ul { list-style-type: none; padding: 0; }
-        li a {
-            display: block;
-            padding: 12px;
-            border-bottom: 1px solid #ddd;
-            text-decoration: none;
-            color: #333;
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 15px; /* Add padding around the content */
+            background-color: #f0f2f5; /* Light background for the page */
         }
-        li a:hover { background-color: #f4f4f4; }
+        h2 {
+            text-align: center; /* Center the heading */
+            color: #333;
+            margin-bottom: 25px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            max-width: 600px; /* Limit width on larger screens */
+            margin: 0 auto; /* Center the list */
+        }
+        li a {
+            display: block; /* Makes the whole area clickable */
+            background-color: #ffffff; /* White background for each item */
+            color: #333; /* Dark text color */
+            padding: 18px 20px; /* Vertical and horizontal padding */
+            margin-bottom: 12px; /* Space between items */
+            border-radius: 8px; /* Rounded corners */
+            text-decoration: none; /* Remove underline */
+            font-size: 1.1em; /* Slightly larger font */
+            text-align: center; /* Center the text */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08); /* Subtle shadow */
+            transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth hover effect */
+        }
+        li a:hover {
+            background-color: #f8f9fa; /* Slightly change background on hover */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12); /* Increase shadow on hover */
+            transform: translateY(-2px); /* Slight lift effect on hover */
+        }
     </style>
 </head>
 <body>

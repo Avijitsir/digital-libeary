@@ -3,39 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <title>Book 2 Subjects</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        body { font-family: sans-serif; }
-        ul { list-style-type: none; padding: 0; max-width: 600px; margin: 20px auto; }
-        li a {
-            display: block;
-            padding: 18px;
-            border-bottom: 1px solid #ddd;
-            text-decoration: none;
-            color: #333;
-            font-size: 1.2em;
+        body {
+            font-family: sans-serif; margin: 0; padding: 15px; background-color: #eef1f5;
         }
-        li a:hover { background-color: #f4f4f4; }
+        h2 {
+            text-align: center; color: #444; margin-bottom: 30px;
+        }
+        .container {
+            max-width: 600px; margin: 0 auto;
+        }
+        /* Style for the link to look like an accordion button */
+        .subject-link {
+            display: block; /* Make it a block */
+            background-color: #ffffff; color: #333; cursor: pointer; padding: 16px 45px 16px 20px; /* Right padding for arrow */
+            width: 100%; text-align: left; border: none; outline: none;
+            font-size: 1.2em; border-radius: 6px; margin-bottom: 10px; /* Added margin-bottom */
+            border-left: 5px solid #4CAF50; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+            transition: background-color 0.2s ease, border-left-color 0.2s ease;
+            position: relative; /* Needed for arrow positioning */
+            box-sizing: border-box; /* Include padding in width */
+            text-decoration: none; /* Remove underline from link */
+        }
+        .subject-link:hover {
+            background-color: #fdfdfd; border-left-color: #388E3C;
+        }
+        /* Style for the arrow icon */
+        .subject-link::after {
+            content: '\\25B6'; /* Right arrow '▶' */
+            font-size: 0.8em; color: #777;
+            position: absolute; right: 20px; top: 50%;
+            transform: translateY(-50%);
+            /* No rotation needed */
+        }
     </style>
 </head>
 <body>
-    <h2>বিষয় নির্বাচন করুন (Book 2)</h2>
-    <ul>
-        <li><a href="../chapters/book2/ancient_history_chapters.html">প্রাচীন যুগের ইতিহাস</a></li>
-        <li><a href="../chapters/book2/modern_history_chapters.html">ভারতের আধুনিক ইতিহাস</a></li>
-        <li><a href="../chapters/book2/indian_polity_chapters.html">ভারতের সংবিধান</a></li>
+    <div class="container">
+        <h2>বিষয় নির্বাচন করুন (Book 2)</h2>
 
-        <li><a href="../chapters/book2/wrold_geography_chapters.html">বিশ্ব ভূগোল</a></li>
-        <li><a href="../chapters/book2/indian_geography_chapters.html">ভারতের ভূগোল</a></li>
-        <li><a href="../chapters/book2/west_bengal_geography_chapters.html">পশ্চিমবঙ্গের ভূগোল</a></li>
-        <li><a href="../chapters/book2/indian_economy_chapters.html">ভারতের অর্থনীতি</a></li>
-         <li><a href="../chapters/book2/life_science_chapters.html">জীবন বিজ্ঞান</a></li>
-        <li><a href="../chapters/book2/physical_science_chapters.html">ভৌত বিজ্ঞান</a></li>
-        <li><a href="../chapters/book2/general_science_chapters.html">সাধারণ বিজ্ঞান (General Science)</a></li>
-        <li><a href="../chapters/book2/current_affairs_chapters.html">কারেন্ট অ্যাফেয়ার্স</a></li>
-        <li><a href="../chapters/book2/statics_gk_chapters.html">স্ট্যাটিক জিকে</a></li>
+        <a href="../chapters/book2/ancient_history_chapters.html" class="subject-link">প্রাচীন যুগের ইতিহাস</a>
+        <a href="../chapters/book2/modern_history_chapters.html" class="subject-link">ভারতের আধুনিক ইতিহাস</a>
+        <a href="../chapters/book2/indian_polity_chapters.html" class="subject-link">ভারতের সংবিধান</a>
+        <a href="../chapters/book2/wrold_geography_chapters.html" class="subject-link">বিশ্ব ভূগোল</a>
+        <a href="../chapters/book2/indian_geography_chapters.html" class="subject-link">ভারতের ভূগোল</a>
+        <a href="../chapters/book2/west_bengal_geography_chapters.html" class="subject-link">পশ্চিমবঙ্গের ভূগোল</a>
+        <a href="../chapters/book2/indian_economy_chapters.html" class="subject-link">ভারতের অর্থনীতি</a>
+        <a href="../chapters/book2/life_science_chapters.html" class="subject-link">জীবন বিজ্ঞান</a>
+        <a href="../chapters/book2/physical_science_chapters.html" class="subject-link">ভৌত বিজ্ঞান</a>
+        <a href="../chapters/book2/general_science_chapters.html" class="subject-link">সাধারণ বিজ্ঞান (General Science)</a>
+        <a href="../chapters/book2/current_affairs_chapters.html" class="subject-link">কারেন্ট অ্যাফেয়ার্স</a>
+        <a href="../chapters/book2/statics_gk_chapters.html" class="subject-link">স্ট্যাটিক জিকে</a>
+        <a href="../chapters/book2/math_chapters.html" class="subject-link">গণিত (Math)</a>
+        <a href="../chapters/book2/reasoning_chapters.html" class="subject-link">রিজনিং (Reasoning)</a>
 
-        <li><a href="../chapters/book2/math_chapters.html">গণিত (Math)</a></li>
-        <li><a href="../chapters/book2/reasoning_chapters.html">রিজনিং (Reasoning)</a></li>
-        </ul>
-</body>
+    </div>
+    </body>
 </html>
