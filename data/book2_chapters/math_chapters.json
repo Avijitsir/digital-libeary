@@ -1,0 +1,43 @@
+{
+  "title": "গণিত (অধ্যায়ের তালিকা)",
+  "chapters": [
+    {
+      "type": "multi_link_chapter",
+      "title": "অধ্যায় ১: সরল সুদ",
+      "links": [
+        {
+          "text": "সরল সুদের সমস্ত সুত্র Part-2",
+          "url": "../../pdfs/book2/Simple_Interest_Formula_part2.pdf"
+        },
+        {
+          "text": "অনুশীলনী-2",
+          "url": "https://avijitsir.github.io/SI-Adv-/"
+        }
+      ]
+    },
+    {
+      "type": "multi_link_chapter",
+      "title": "অধ্যায় 2: জটিল সুদ",
+      "links": [
+        {
+          "text": "জটিল সুদের সমস্ত সুত্র",
+          "url": "../../pdfs/book2/Compount_Interest_Formula_part1.pdf"
+        },
+        {
+          "text": "অনুশীলনী-1",
+          "url": "https://www.example.com/some-resource"
+        }
+      ]
+    },
+    {
+      "type": "simple_chapter",
+      "title": "অধ্যায় ২: লাভ ও ক্ষতি",
+      "link": "../../pdfs/book2/math_chapter_2.pdf"
+    },
+    {
+      "type": "simple_chapter",
+      "title": "অধ্যায় ৩: সময় ও কার্য",
+      "link": "../../pdfs/book2/math_chapter_3.pdf"
+    }
+  ]
+}
