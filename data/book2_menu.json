@@ -1,0 +1,60 @@
+{
+  "subjects": [
+    {
+      "title": "প্রাচীন যুগের ইতিহাস",
+      "link": "../chapters/book2/ancient_history_chapters.html"
+    },
+    {
+      "title": "ভারতের আধুনিক ইতিহাস",
+      "link": "../chapters/book2/modern_history_chapters.html"
+    },
+    {
+      "title": "ভারতের সংবিধান",
+      "link": "../chapters/book2/indian_polity_chapters.html"
+    },
+    {
+      "title": "বিশ্ব ভূগোল",
+      "link": "../chapters/book2/wrold_geography_chapters.html"
+    },
+    {
+      "title": "ভারতের ভূগোল",
+      "link": "../chapters/book2/indian_geography_chapters.html"
+    },
+    {
+      "title": "পশ্চিমবঙ্গের ভূগোল",
+      "link": "../chapters/book2/west_bengal_geography_chapters.html"
+    },
+    {
+      "title": "ভারতের অর্থনীতি",
+      "link": "../chapters/book2/indian_economy_chapters.html"
+    },
+    {
+      "title": "জীবন বিজ্ঞান",
+      "link": "../chapters/book2/life_science_chapters.html"
+    },
+    {
+      "title": "ভৌত বিজ্ঞান",
+      "link": "../chapters/book2/physical_science_chapters.html"
+    },
+    {
+      "title": "সাধারণ বিজ্ঞান (General Science)",
+      "link": "../chapters/book2/general_science_chapters.html"
+    },
+    {
+      "title": "কারেন্ট অ্যাফেয়ার্স",
+      "link": "../chapters/book2/current_affairs_chapters.html"
+    },
+    {
+      "title": "স্ট্যাটিক জিকে",
+      "link": "../chapters/book2/statics_gk_chapters.html"
+    },
+    {
+      "title": "গণিত (Math)",
+      "link": "../chapters/book2/math_chapters.html"
+    },
+    {
+      "title": "রিজনিং (Reasoning)",
+      "link": "../chapters/book2/reasoning_chapters.html"
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 backend:
   name: git-gateway # GitHub-এর সাথে কানেক্ট করার জন্য
   branch: main # আপনার GitHub ব্রাঞ্চের নাম
-  repo: "avijitsir/digital-library" # আপনার রিপোজিটরির নাম
+  repo: "avijitsir/digital-libeary" # আপনার রিপোজিটরির নাম
 
 media_folder: "pdfs" # PDF আপলোড করলে এই ফোল্ডারে সেভ হবে
 public_folder: "/pdfs"
