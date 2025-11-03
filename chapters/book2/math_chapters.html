@@ -83,8 +83,9 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // ডেটা ফাইলটি লোড করুন
-            fetch('../data/book2_chapters/math_chapters.json') // পাথটি লক্ষ্য করুন
+            
+            // --- শুধু এই লাইনটি পরিবর্তন করা হয়েছে ---
+            fetch('../../data/book2_chapters/math_chapters.json') 
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Network response was not ok');
