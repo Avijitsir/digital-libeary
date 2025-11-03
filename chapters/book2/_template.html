@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <title>অধ্যায়ের তালিকা</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* এটি আপনার অন্যান্য chapter পেজের মতোই স্টাইল */
+        body {
+            font-family: sans-serif; margin: 0; padding: 15px; background-color: #eef1f5;
+        }
+        h2 {
+            text-align: center; color: #444; margin-bottom: 30px;
+        }
+        ul {
+            list-style-type: none; padding: 0; max-width: 600px; margin: 0 auto;
+        }
+        li {
+            background-color: #ffffff; margin-bottom: 10px; border-radius: 6px;
+            text-align: left; border-left: 5px solid #4CAF50;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+        }
+        li a {
+             display: block; padding: 16px 20px; color: #333;
+             text-decoration: none; font-size: 1.2em;
+             transition: background-color 0.2s ease;
+        }
+         li a:hover { background-color: #fdfdfd; color: #333; }
+         li:hover { border-left-color: #388E3C; }
+         #loading-message {
+            text-align: center; font-size: 1.2em; color: #555; padding: 20px;
+            border: none; box-shadow: none; background: none;
+         }
+    </style>
+</head>
+<body>
+    <h2 id="page-title">Loading...</h2>
+    
+    <ul id="chapter-list">
+        <li id="loading-message">অধ্যায় লোড হচ্ছে...</li>
+    </ul>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const listContainer = document.getElementById('chapter-list');
+            const titleElement = document.getElementById('page-title');
+            const loadingMessage = document.getElementById('loading-message');
+            let jsonFileName = '';
+
+            try {
+                // 1. ব্রাউজারের লিঙ্ক (URL) থেকে 'subject'-এর নাম খুঁজে বের করুন
+                const params = new URLSearchParams(window.location.search);
+                const subjectName = params.get('subject'); // e.g., 'static-gk'
+
+                if (!subjectName) {
+                    throw new Error('Subject name not specified in URL.');
+                }
+                
+                // 2. JSON ফাইলের পুরো পাথ (address) তৈরি করুন
+                jsonFileName = subjectName + '.json';
+                const jsonPath = `../../data/book2_chapters/${jsonFileName}`;
+
+
+                // 3. ডেটা ফাইলটি লোড করুন
+                fetch(jsonPath)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`File not found: ${jsonPath}`);
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        // 4. টাইটেল সেট করুন
+                        titleElement.textContent = data.title;
+                        document.title = data.title; // ব্রাউজারের ট্যাব টাইটেল
+                        
+                        // 5. লোডিং মেসেজটি সরান
+                        listContainer.removeChild(loadingMessage);
+
+                        // 6. JSON ডেটার (chapters) ওপর লুপ চালান
+                        data.chapters.forEach(chapter => {
+                            const li = document.createElement('li');
+                            const a = document.createElement('a');
+                            
+                            a.href = chapter.link;
+                            a.textContent = chapter.title;
+                            a.target = '_blank';
+                            
+                            li.appendChild(a);
+                            listContainer.appendChild(li);
+                        });
+                    })
+                    .catch(handleLoadError);
+            
+            } catch (error) {
+                handleLoadError(error);
+            }
+
+            function handleLoadError(error) {
+                console.error('Error loading chapter list:', error);
+                titleElement.textContent = 'Error';
+                if (loadingMessage) {
+                    loadingMessage.textContent = `অধ্যায় লোড করা সম্ভব হয়নি। (${jsonFileName ? jsonFileName + ' ফাইলটি পাওয়া যায়নি' : 'লিঙ্কে সাবজেক্টের নাম নেই'})`;
+                    loadingMessage.style.color = 'red';
+                }
+            }
+        });
+    </script>
+</body>
+</html>
