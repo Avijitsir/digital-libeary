@@ -40,19 +40,58 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12); /* Increase shadow on hover */
             transform: translateY(-2px); /* Slight lift effect on hover */
         }
+        /* জাভাস্ক্রিপ্ট লোড না হলে বা ডেটা না পেলে এটি দেখাবে */
+        #loading-message {
+            text-align: center;
+            font-size: 1.1em;
+            color: #555;
+        }
     </style>
 </head>
 <body>
     <h2>বিষয় নির্বাচন করুন</h2>
-    <ul>
-        <li><a href="../tocs/book1/ancient_history_toc.html">Ancient History</a></li>
-        <li><a href="../tocs/book1/modern_history_toc.html">Modern History</a></li>
-        <li><a href="../tocs/book1/indian_geography_toc.html">Indian Geography</a></li>
-        <li><a href="../tocs/book1/indian_polity_toc.html">Indian Polity</a></li>
-        <li><a href="../tocs/book1/indian_economy_toc.html">Indian Economy</a></li>
-        <li><a href="../tocs/book1/life_science_toc.html">Life Science</a></li>
-        <li><a href="../tocs/book1/physical_science_toc.html">Physical Science</a></li>
-        <li><a href="../tocs/book1/west_bengal_geography_toc.html">West Bengal Geography</a></li>
+    
+    <ul id="subject-list">
+        <li id="loading-message">Loading subjects...</li>
     </ul>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // ডেটা ফাইলটি লোড করুন
+            fetch('../data/book1_menu.json') // পাথটি লক্ষ্য করুন
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const listContainer = document.getElementById('subject-list');
+                    const loadingMessage = document.getElementById('loading-message');
+                    
+                    // লোডিং মেসেজটি সরান
+                    if (loadingMessage) {
+                        listContainer.removeChild(loadingMessage);
+                    }
+
+                    // JSON ডেটার (subjects) ওপর লুপ চালান
+                    data.subjects.forEach(subject => {
+                        const li = document.createElement('li');
+                        const a = document.createElement('a');
+                        
+                        a.textContent = subject.title; // JSON থেকে title
+                        a.href = subject.link;         // JSON থেকে link
+                        
+                        li.appendChild(a);
+                        listContainer.appendChild(li);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching subject list:', error);
+                    const listContainer = document.getElementById('subject-list');
+                    listContainer.innerHTML = '<li id="loading-message" style="color: red;">বিষয় লোড করা সম্ভব হয়নি।</li>';
+                });
+        });
+    </script>
 </body>
 </html>

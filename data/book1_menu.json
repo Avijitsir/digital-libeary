@@ -1,0 +1,36 @@
+{
+  "subjects": [
+    {
+      "title": "Ancient History",
+      "link": "../tocs/book1/ancient_history_toc.html"
+    },
+    {
+      "title": "Modern History",
+      "link": "../tocs/book1/modern_history_toc.html"
+    },
+    {
+      "title": "Indian Geography",
+      "link": "../tocs/book1/indian_geography_toc.html"
+    },
+    {
+      "title": "Indian Polity",
+      "link": "../tocs/book1/indian_polity_toc.html"
+    },
+    {
+      "title": "Indian Economy",
+      "link": "../tocs/book1/indian_economy_toc.html"
+    },
+    {
+      "title": "Life Science",
+      "link": "../tocs/book1/life_science_toc.html"
+    },
+    {
+      "title": "Physical Science",
+      "link": "../tocs/book1/physical_science_toc.html"
+    },
+    {
+      "title": "West Bengal Geography",
+      "link": "../tocs/book1/west_bengal_geography_toc.html"
+    }
+  ]
+}
