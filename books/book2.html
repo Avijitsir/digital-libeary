@@ -35,29 +35,62 @@
             font-size: 0.8em; color: #777;
             position: absolute; right: 20px; top: 50%;
             transform: translateY(-50%);
-            /* No rotation needed */
+        }
+        /* লোডিং মেসেজের জন্য স্টাইল */
+        #loading-message {
+            text-align: center;
+            font-size: 1.2em;
+            color: #555;
+            padding: 20px;
         }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="container" id="subject-list-container">
         <h2>বিষয় নির্বাচন করুন (Book 2)</h2>
-
-        <a href="../chapters/book2/ancient_history_chapters.html" class="subject-link">প্রাচীন যুগের ইতিহাস</a>
-        <a href="../chapters/book2/modern_history_chapters.html" class="subject-link">ভারতের আধুনিক ইতিহাস</a>
-        <a href="../chapters/book2/indian_polity_chapters.html" class="subject-link">ভারতের সংবিধান</a>
-        <a href="../chapters/book2/wrold_geography_chapters.html" class="subject-link">বিশ্ব ভূগোল</a>
-        <a href="../chapters/book2/indian_geography_chapters.html" class="subject-link">ভারতের ভূগোল</a>
-        <a href="../chapters/book2/west_bengal_geography_chapters.html" class="subject-link">পশ্চিমবঙ্গের ভূগোল</a>
-        <a href="../chapters/book2/indian_economy_chapters.html" class="subject-link">ভারতের অর্থনীতি</a>
-        <a href="../chapters/book2/life_science_chapters.html" class="subject-link">জীবন বিজ্ঞান</a>
-        <a href="../chapters/book2/physical_science_chapters.html" class="subject-link">ভৌত বিজ্ঞান</a>
-        <a href="../chapters/book2/general_science_chapters.html" class="subject-link">সাধারণ বিজ্ঞান (General Science)</a>
-        <a href="../chapters/book2/current_affairs_chapters.html" class="subject-link">কারেন্ট অ্যাফেয়ার্স</a>
-        <a href="../chapters/book2/statics_gk_chapters.html" class="subject-link">স্ট্যাটিক জিকে</a>
-        <a href="../chapters/book2/math_chapters.html" class="subject-link">গণিত (Math)</a>
-        <a href="../chapters/book2/reasoning_chapters.html" class="subject-link">রিজনিং (Reasoning)</a>
-
+        <div id="loading-message">Loading subjects...</div>
     </div>
-    </body>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // ডেটা ফাইলটি লোড করুন
+            fetch('../data/book2_menu.json') // পাথটি লক্ষ্য করুন (books/ থেকে data/)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const listContainer = document.getElementById('subject-list-container');
+                    const loadingMessage = document.getElementById('loading-message');
+                    
+                    // লোডিং মেসেজটি সরান
+                    if (loadingMessage) {
+                        listContainer.removeChild(loadingMessage);
+                    }
+
+                    // JSON ডেটার (subjects) ওপর লুপ চালান
+                    data.subjects.forEach(subject => {
+                        // প্রতিটি বিষয়ের জন্য একটি <a> ট্যাগ তৈরি করুন
+                        const a = document.createElement('a');
+                        a.href = subject.link;         // JSON থেকে link
+                        a.textContent = subject.title; // JSON থেকে title
+                        a.className = 'subject-link';  // পুরোনো স্টাইলটি যোগ করুন
+                        
+                        // ট্যাগটিকে কন্টেইনারে যোগ করুন
+                        listContainer.appendChild(a);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching subject list:', error);
+                    const loadingMessage = document.getElementById('loading-message');
+                    if (loadingMessage) {
+                        loadingMessage.textContent = 'বিষয় লোড করা সম্ভব হয়নি।';
+                        loadingMessage.style.color = 'red';
+                    }
+                });
+        });
+    </script>
+</body>
 </html>
