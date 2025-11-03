@@ -7,6 +7,7 @@ media_folder: "pdfs"
 public_folder: "/pdfs"
 
 collections:
+  # --- Collection 1: Book Main Menus ---
   - name: "book_menus"
     label: "Book Main Menus (বইয়ের সূচি)"
     label_singular: "Book Main Menu"
@@ -32,6 +33,8 @@ collections:
             fields:
               - { label: "Subject Name ( വിഷയം )", name: "title", widget: "string" }
               - { label: "Link to Chapter Page", name: "link", widget: "string" }
+
+  # --- Collection 2: Book 1-এর সূচিপত্র (TOC) ---
   - name: "book1_toc"
     label: "Book 1 - সূচিপত্র (TOCs)"
     label_singular: "Book 1 - সূচিপত্র"
@@ -39,6 +42,8 @@ collections:
     folder: "data/book1_tocs"
     create: true
     slug: "{{slug}}"
+    format: "json"      # <-- এই লাইনটি নিশ্চিত করে যে এটি JSON ফরম্যাটে সেভ হবে
+    extension: "json"   # <-- এই লাইনটি নিশ্চিত করে যে ফাইলটির নাম .json হবে
     fields:
       - { label: "Subject Title (e.g., Ancient History)", name: "title", widget: "string" }
       - label: "Topics"
@@ -53,6 +58,8 @@ collections:
             widget: "list"
             optional: true
             field: { label: "Sub-topic", name: "item", widget: "string" }
+
+  # --- Collection 3: Book 2-এর সাধারণ অধ্যায়গুলি ---
   - name: "book2_chapters_simple"
     label: "Book 2 - অধ্যায় (সাধারণ)"
     label_singular: "অধ্যায় (সাধারণ)"
@@ -60,6 +67,8 @@ collections:
     folder: "data/book2_chapters"
     create: true
     slug: "{{slug}}"
+    format: "json"      # <-- এই লাইনটি যোগ করা হয়েছে
+    extension: "json"   # <-- এই লাইনটি যোগ করা হয়েছে
     fields:
       - { label: "Subject Title (e.g., Static GK)", name: "title", widget: "string" }
       - label: "Chapters"
@@ -68,6 +77,8 @@ collections:
         fields:
           - { label: "Chapter Name", name: "title", widget: "string" }
           - { label: "PDF Link", name: "link", widget: "file" }
+
+  # --- Collection 4: Book 2-এর গণিত অধ্যায় (বিশেষ কেস) ---
   - name: "book2_math"
     label: "Book 2 - গণিত অধ্যায়"
     label_singular: "গণিত অধ্যায়"
