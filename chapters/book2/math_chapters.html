@@ -34,7 +34,7 @@
             text-align: left;
             border-left: 5px solid #4CAF50;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
-            /* Removed transition as the whole <li> isn't usually hovered */
+            line-height: 1.6; /* Added for better spacing on multi-link */
         }
         /* Style for links within the list item */
         li a {
@@ -52,36 +52,114 @@
          /* Style for list items that are fully clickable links */
         li.clickable-link a {
              display: block; /* Make the whole area clickable */
-             padding: 0; /* Reset padding as it's on the li */
+             padding: 0;
              margin: -16px -20px; /* Expand link to fill the li padding */
              padding: 16px 20px; /* Re-apply padding to the link */
              color: #333; /* Use default text color for full link */
              text-decoration: none;
+             font-size: 1em; /* Reset font size for the link itself */
+             margin: 0; /* Reset margin */
         }
          li.clickable-link a:hover {
               background-color: #fdfdfd;
-              /* border-left-color: #388E3C; /* Optional: Keep border hover */
               text-decoration: none; /* Remove underline for full link hover */
               color: #333;
          }
-
+         /* লোডিং মেসেজের জন্য স্টাইল */
+        #loading-message {
+            text-align: center;
+            font-size: 1.2em;
+            color: #555;
+            padding: 20px;
+        }
     </style>
 </head>
 <body>
-    <h2>গণিত (অধ্যায়ের তালিকা)</h2>
-    <ul>
-        <li> অধ্যায় ১: সরল সুদ
-            (<a href="../../pdfs/book2/Simple_Interest_Formula_part2.pdf" target="_blank">সরল সুদের সমস্ত সুত্র Part-2</a> |
-             <a href="https://avijitsir.github.io/SI-Adv-/" target="_blank">অনুশীলনী-2</a>)
-        </li>
-        <li> অধ্যায় 2: জটিল সুদ
-            (<a href="../../pdfs/book2/Compount_Interest_Formula_part1.pdf" target="_blank">জটিল সুদের সমস্ত সুত্র</a> |
-             <a href="https://www.example.com/some-resource" target="_blank">অনুশীলনী-1</a>)
-        </li>
-        <li class="clickable-link"> <a href="../../pdfs/book2/math_chapter_2.pdf" target="_blank">অধ্যায় ২: লাভ ও ক্ষতি</a>
-        </li>
-        <li class="clickable-link"> <a href="../../pdfs/book2/math_chapter_3.pdf" target="_blank">অধ্যায় ৩: সময় ও কার্য</a>
-        </li>
-        </ul>
+    <h2 id="page-title">গণিত (অধ্যায়ের তালিকা)</h2>
+    
+    <ul id="chapter-list">
+        <li id="loading-message" style="border: none; box-shadow: none; background: none;">Loading chapters...</li>
+    </ul>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // ডেটা ফাইলটি লোড করুন
+            fetch('../data/book2_chapters/math_chapters.json') // পাথটি লক্ষ্য করুন
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const listContainer = document.getElementById('chapter-list');
+                    const titleElement = document.getElementById('page-title');
+                    const loadingMessage = document.getElementById('loading-message');
+                    
+                    // 1. টাইটেল সেট করুন
+                    if (data.title) {
+                        titleElement.textContent = data.title;
+                        document.title = data.title; // ব্রাউজারের ট্যাব টাইটেলও সেট করুন
+                    }
+                    
+                    // 2. লোডিং মেসেজটি সরান
+                    if (loadingMessage) {
+                        listContainer.removeChild(loadingMessage);
+                    }
+
+                    // 3. JSON ডেটার (chapters) ওপর লুপ চালান
+                    data.chapters.forEach(chapter => {
+                        const li = document.createElement('li');
+                        
+                        // 4. অধ্যায়ের 'type' চেক করুন
+                        if (chapter.type === 'simple_chapter') {
+                            // --- একটি লিঙ্ক সহ অধ্যায় ---
+                            li.className = 'clickable-link'; // পুরো li-কে ক্লিকযোগ্য করার জন্য ক্লাস
+                            
+                            const a = document.createElement('a');
+                            a.href = chapter.link;
+                            a.textContent = chapter.title;
+                            a.target = '_blank'; // PDF নতুন ট্যাবে খুলবে
+                            
+                            li.appendChild(a);
+                            
+                        } else if (chapter.type === 'multi_link_chapter') {
+                            // --- একাধিক লিঙ্ক সহ অধ্যায় ---
+                            
+                            // প্রথমে অধ্যায়ের টাইটেল যোগ করুন
+                            li.appendChild(document.createTextNode(chapter.title + ' ('));
+                            
+                            // ভেতরের লিঙ্কগুলির জন্য লুপ চালান
+                            chapter.links.forEach((link, index) => {
+                                const a = document.createElement('a');
+                                a.href = link.url;
+                                a.textContent = link.text;
+                                a.target = '_blank';
+                                
+                                li.appendChild(a);
+                                
+                                // যদি এটি শেষ লিঙ্ক না হয়, তাহলে একটি "|" চিহ্ন যোগ করুন
+                                if (index < chapter.links.length - 1) {
+                                    li.appendChild(document.createTextNode(' | '));
+                                }
+                            });
+                            
+                            li.appendChild(document.createTextNode(')'));
+                        }
+                        
+                        // 5. তৈরি করা <li>-টিকে মূল তালিকাতে যোগ করুন
+                        listContainer.appendChild(li);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching chapter list:', error);
+                    const loadingMessage = document.getElementById('loading-message');
+                    if (loadingMessage) {
+                        loadingMessage.textContent = 'অধ্যায় লোড করা সম্ভব হয়নি।';
+                        loadingMessage.style.color = 'red';
+                    }
+                });
+        });
+    </script>
 </body>
 </html>
