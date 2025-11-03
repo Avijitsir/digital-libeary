@@ -1,13 +1,12 @@
 backend:
-  name: git-gateway # GitHub-এর সাথে কানেক্ট করার জন্য
-  branch: main # আপনার GitHub ব্রাঞ্চের নাম
-  repo: "avijitsir/digital-libeary" # আপনার রিপোজিটরির নাম
+  name: git-gateway
+  branch: main
+  repo: "avijitsir/digital-libeary"
 
-media_folder: "pdfs" # PDF আপলোড করলে এই ফোল্ডারে সেভ হবে
+media_folder: "pdfs"
 public_folder: "/pdfs"
 
 collections:
-  # --- Collection 1: Book Main Menus ---
   - name: "book_menus"
     label: "Book Main Menus (বইয়ের সূচি)"
     label_singular: "Book Main Menu"
@@ -15,7 +14,7 @@ collections:
     files:
       - label: "Book 1 Main Menu"
         name: "book1_main_menu"
-        file: "data/book1_menu.json" # Book 1-এর ডেটা এখানে সেভ হবে
+        file: "data/book1_menu.json"
         fields:
           - label: "Subjects"
             name: "subjects"
@@ -23,10 +22,9 @@ collections:
             fields:
               - { label: "Subject Name", name: "title", widget: "string" }
               - { label: "Link to TOC Page", name: "link", widget: "string" }
-      
       - label: "Book 2 Main Menu"
         name: "book2_main_menu"
-        file: "data/book2_menu.json" # Book 2-এর ডেটা এখানে সেভ হবে
+        file: "data/book2_menu.json"
         fields:
           - label: "Subjects"
             name: "subjects"
@@ -34,13 +32,11 @@ collections:
             fields:
               - { label: "Subject Name ( വിഷയം )", name: "title", widget: "string" }
               - { label: "Link to Chapter Page", name: "link", widget: "string" }
-
-  # --- Collection 2: Book 1-এর সূচিপত্র (TOC) ---
   - name: "book1_toc"
     label: "Book 1 - সূচিপত্র (TOCs)"
     label_singular: "Book 1 - সূচিপত্র"
     description: "Book 1-এর বিষয়গুলির সূচিপত্র এডিট করুন।"
-    folder: "data/book1_tocs" # JSON ফাইলগুলি এই ফোল্ডারে থাকবে
+    folder: "data/book1_tocs"
     create: true
     slug: "{{slug}}"
     fields:
@@ -57,13 +53,11 @@ collections:
             widget: "list"
             optional: true
             field: { label: "Sub-topic", name: "item", widget: "string" }
-
-  # --- Collection 3: Book 2-এর সাধারণ অধ্যায়গুলি ---
   - name: "book2_chapters_simple"
     label: "Book 2 - অধ্যায় (সাধারণ)"
     label_singular: "অধ্যায় (সাধারণ)"
     description: "Book 2-এর যে বিষয়গুলিতে শুধু একটি করে PDF লিঙ্ক আছে।"
-    folder: "data/book2_chapters" # JSON ফাইলগুলি এই ফোল্ডারে থাকবে
+    folder: "data/book2_chapters"
     create: true
     slug: "{{slug}}"
     fields:
@@ -73,9 +67,7 @@ collections:
         widget: "list"
         fields:
           - { label: "Chapter Name", name: "title", widget: "string" }
-          - { label: "PDF Link", name: "link", widget: "file" } # PDF আপলোডের সুবিধা
-
-  # --- Collection 4: Book 2-এর গণিত অধ্যায় (বিশেষ কেস) ---
+          - { label: "PDF Link", name: "link", widget: "file" }
   - name: "book2_math"
     label: "Book 2 - গণিত অধ্যায়"
     label_singular: "গণিত অধ্যায়"
@@ -83,7 +75,7 @@ collections:
     files:
       - label: "Math Chapters"
         name: "math_chapters"
-        file: "data/book2_chapters/math_chapters.json" # গণিতের ডেটা এখানে সেভ হবে
+        file: "data/book2_chapters/math_chapters.json"
         fields:
           - { label: "Subject Title", name: "title", widget: "string", default: "গণিত (অধ্যায়ের তালিকা)" }
           - label: "Chapters"
